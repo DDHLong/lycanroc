@@ -8,15 +8,16 @@ import {
   useColorModeValue,
   useColorMode,
   Stack,
+  Heading,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 
-const Links = ["Dashboard", "Projects", "Team"];
+const Links = ["Projects", "About"];
 
 const NavLink = ({ children }) => (
   <Link
     px={2}
-    py={1}
+    py={2}
     rounded={"md"}
     _hover={{
       textDecoration: "none",
@@ -34,8 +35,12 @@ export default function App() {
 
   return (
     <>
-      <header>
-        <Box bg={useColorModeValue("gray.100", "purple.600")} px={4}>
+      <Heading>
+        <Box
+          fontSize="xl"
+          bg={useColorModeValue("gray.100", "purple.600")}
+          px={4}
+        >
           <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
             <IconButton
               size={"md"}
@@ -74,7 +79,7 @@ export default function App() {
             </Box>
           ) : null}
         </Box>
-      </header>
+      </Heading>
 
       <Box p={4}>Main Content Here</Box>
     </>
