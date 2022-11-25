@@ -1,10 +1,28 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useReducer } from "react";
+import roleReducer, { initialState } from "./roleReducer";
 
-export const RoleContext = createContext();
+export const RoleContext = createContext(initialState);
 
 const RoleProvider = (props) => {
-  const [roles, setRoles] = useState([]);
-  const value = [roles, setRoles];
+  const [state, dispatch] = useReducer(roleReducer, initialState);
+
+  const addPlayer = (player) => {
+    const updatedGame = state.players.concat(player);
+
+    dispatch({
+      type: "ADD_PLAYER",
+      payload: {
+        players: updatedGame,
+      },
+    });
+  };
+
+  const value = {
+    total: state.total,
+    players: state.players,
+    addPlayer,
+  };
+
   return <RoleContext.Provider value={value} {...props} />;
 };
 

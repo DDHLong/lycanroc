@@ -11,6 +11,7 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
+import PlayerInput from "./components/PlayerInput";
 
 const Links = ["Projects", "About"];
 
@@ -81,7 +82,9 @@ export default function App() {
         </Box>
       </Heading>
 
-      <Box p={4}>Main Content Here</Box>
+      <Box p={4}>
+        <PlayerInput />
+      </Box>
     </>
   );
 }
