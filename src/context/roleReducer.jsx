@@ -12,6 +12,16 @@ const roleReducer = (state, action) => {
         ...state,
         players: payload.players,
       };
+    case "UPDATE_ROLE":
+      console.log("UPDATE", payload);
+      return {
+        ...state,
+        players: state.players.map((player, i) =>
+          player.name === payload.players.name
+            ? { ...player, role: payload.players.role }
+            : player
+        ),
+      };
     default:
       throw new Error(`No case for type ${type} found in roleReducer.`);
   }

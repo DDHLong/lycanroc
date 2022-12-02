@@ -7,12 +7,21 @@ const RoleProvider = (props) => {
   const [state, dispatch] = useReducer(roleReducer, initialState);
 
   const addPlayer = (player) => {
-    const updatedGame = state.players.concat(player);
+    const updatedPlayer = state.players.concat(player);
 
     dispatch({
       type: "ADD_PLAYER",
       payload: {
-        players: updatedGame,
+        players: updatedPlayer,
+      },
+    });
+  };
+
+  const updatePlayer = (player) => {
+    dispatch({
+      type: "UPDATE_ROLE",
+      payload: {
+        players: player,
       },
     });
   };
@@ -21,6 +30,7 @@ const RoleProvider = (props) => {
     total: state.total,
     players: state.players,
     addPlayer,
+    updatePlayer,
   };
 
   return <RoleContext.Provider value={value} {...props} />;
