@@ -1,0 +1,14 @@
+.slide-in {
+  animation: fly-in 0.5s ease-in;
+}
+
+@keyframes fly-in {
+  0% {
+    transform: translateX(50%);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

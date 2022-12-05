@@ -11,7 +11,7 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
-import PlayerInput from "./components/PlayerInput";
+import PlayerInput from "./components/PlayerInput/PlayerInput";
 
 const Links = ["Projects", "About"];
 

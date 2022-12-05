@@ -4,12 +4,13 @@ import {
   Flex,
   Input,
   Select,
-  Stack,
+  SimpleGrid,
   useToast,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { useRole } from "../context/RoleProvider";
-import { RoleNameEnum } from "../enums/RoleEnum";
+import { useRole } from "../../context/RoleProvider";
+import { RoleNameEnum } from "../../enums/RoleEnum";
+import "./index.css";
 
 const options = [
   RoleNameEnum.Villager,
@@ -58,12 +59,14 @@ function PlayerInput() {
           />
           <Button onClick={handleSubmit}>Gâu</Button>
         </Flex>
-        <Stack mt={7}>
+        <SimpleGrid mt={7} columns={[1, 2, null, 3]} spacing="40px">
           {players &&
             players.map((p, i) => (
-              <div key={i}>
-                <Flex mt={3} alignItems={"center"} justifyContent={"center"}>
-                  <Box mr={10}>{p.name}</Box>
+              <div className="slide-in" key={i}>
+                <Flex alignItems={"center"} justifyContent={"center"}>
+                  <Box className="slide-in" mr={10}>
+                    {p.name}
+                  </Box>
                   <Select
                     onChange={(e) => handleSelect(e, p.name)}
                     w={200}
@@ -78,7 +81,7 @@ function PlayerInput() {
                 </Flex>
               </div>
             ))}
-        </Stack>
+        </SimpleGrid>
       </Box>
     </>
   );
