@@ -10,6 +10,7 @@ import {
 import React, { useState } from "react";
 import { useRole } from "../../context/RoleProvider";
 import { RoleNameEnum } from "../../enums/RoleEnum";
+import useStart from "../../hooks/useStart";
 import "./index.css";
 
 const options = [
@@ -20,7 +21,7 @@ const options = [
   RoleNameEnum.Witch,
 ];
 
-function PlayerInput() {
+function PlayerInput({ startGame }) {
   const toast = useToast();
   const { players, addPlayer, updatePlayer } = useRole();
   const [value, setValue] = useState("");
@@ -57,7 +58,10 @@ function PlayerInput() {
             mr={5}
             placeholder="Name"
           />
-          <Button onClick={handleSubmit}>Gâu</Button>
+          <Button mr={5} onClick={handleSubmit}>
+            Thêm
+          </Button>
+          <Button onClick={startGame}>Chơi</Button>
         </Flex>
         <SimpleGrid mt={7} columns={[1, 2, null, 3]} spacing="40px">
           {players &&

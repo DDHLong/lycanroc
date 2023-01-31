@@ -7,9 +7,17 @@ export const RolePriorityEnum = {
 };
 
 export const RoleNameEnum = {
-    Protector: "Bảo vệ",
-    Werewolf: "Sói",
-    Seer: "Tiên tri",
-    Witch: "Phù thuỷ",
-    Villager: "Dân làng",
-  };
+  Protector: "Bảo vệ",
+  Werewolf: "Sói",
+  Seer: "Tiên tri",
+  Witch: "Phù thuỷ",
+  Villager: "Dân làng",
+};
+
+export const NamePriorityEnum = [
+  {name: "Bảo vệ", order: 3},
+  {name: "Sói", order: 4},
+  {name: "Tiên tri", order: 5},
+  {name: "Phù thuỷ", order: 6},
+  {name: "Dân làng", order: 1000},
+];
