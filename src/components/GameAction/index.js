@@ -1,11 +1,11 @@
 import { Button, Center, HStack, Stack } from "@chakra-ui/react";
 import React from "react";
-import { useRole } from "../../context/RoleProvider";
-import { NamePriorityEnum } from "../../enums/RoleEnum";
+import useAction from "../../hooks/useAction";
 import useSorted from "../../hooks/useSorted";
 
 export default function ActionScreen() {
   const { sortedPlayers } = useSorted();
+  const { findAction } = useAction();
 
   return (
     <>

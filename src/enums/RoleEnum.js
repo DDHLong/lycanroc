@@ -1,10 +1,4 @@
-export const RolePriorityEnum = {
-  Protector: 3,
-  Werewolf: 4,
-  Seer: 5,
-  Witch: 6,
-  Villager: 1000,
-};
+import { doNothing, foreseer, protect, witchKill, witchRevived, wolfKill } from "../action/action";
 
 export const RoleNameEnum = {
   Protector: "Bảo vệ",
@@ -15,9 +9,9 @@ export const RoleNameEnum = {
 };
 
 export const NamePriorityEnum = [
-  {name: "Bảo vệ", order: 3},
-  {name: "Sói", order: 4},
-  {name: "Tiên tri", order: 5},
-  {name: "Phù thuỷ", order: 6},
-  {name: "Dân làng", order: 1000},
+  {roleName: "Bảo vệ", order: 3, action: protect},
+  {roleName: "Sói", order: 4, action: wolfKill},
+  {roleName: "Tiên tri", order: 5, action: foreseer},
+  {roleName: "Phù thuỷ", order: 6, action: [witchKill, witchRevived]},
+  {roleName: "Dân làng", order: 1000, action: doNothing},
 ];
