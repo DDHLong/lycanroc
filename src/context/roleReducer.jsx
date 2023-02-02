@@ -12,13 +12,13 @@ const roleReducer = (state, action) => {
         ...state,
         players: payload.players,
       };
-    case "UPDATE_ROLE":
-      console.log("UPDATE", payload);
+    case "UPDATE_PLAYER":
+      console.log("UPDATE", payload.players.type);
       return {
         ...state,
         players: state.players.map((player, i) =>
           player.name === payload.players.name
-            ? { ...player, role: payload.players.role }
+            ? { ...player, [payload.players.type]: payload.players[payload.players.type] }
             : player
         ),
       };

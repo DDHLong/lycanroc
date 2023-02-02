@@ -44,7 +44,7 @@ function PlayerInput({ startGame }) {
   };
 
   const handleSelect = (event, name) => {
-    const player = { name: name, role: event.target.value };
+    const player = { name: name, role: event.target.value, type: "role" };
     updatePlayer(player);
   };
 

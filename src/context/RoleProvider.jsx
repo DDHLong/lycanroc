@@ -19,7 +19,7 @@ const RoleProvider = (props) => {
 
   const updatePlayer = (player) => {
     dispatch({
-      type: "UPDATE_ROLE",
+      type: "UPDATE_PLAYER",
       payload: {
         players: player,
       },
