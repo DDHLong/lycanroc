@@ -1,8 +1,8 @@
-import { useRole } from "../context/RoleProvider";
 import { NamePriorityEnum } from "../enums/RoleEnum";
+import { usePlayerStore } from "../store/store";
 
 const useSorted = () => {
-  const { players } = useRole();
+  const { players } = usePlayerStore();
 
   //find match role and compare the call order
   const CompareFn = (a, b) => {

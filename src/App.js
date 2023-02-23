@@ -12,10 +12,8 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import PlayerInput from "./components/PlayerInput/PlayerInput";
-import { useRole } from "./context/RoleProvider";
-import useStart from "./hooks/useStart";
 import ActionScreen from "./components/GameAction";
-import { NamePriorityEnum } from "./enums/RoleEnum";
+import { usePlayStore } from "./store/store";
 
 const Links = ["Projects", "About"];
 
@@ -35,9 +33,11 @@ const NavLink = ({ children }) => (
 );
 
 export default function App() {
-  const { isPlay, startGame } = useStart();
+  const { isPlay } = usePlayStore();
   const { colorMode, toggleColorMode } = useColorMode("dark");
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  console.log(isPlay);
 
   return (
     <>
@@ -87,9 +87,7 @@ export default function App() {
         </Box>
       </Heading>
 
-      <Box p={4}>
-        {!isPlay ? <PlayerInput startGame={startGame} /> : <ActionScreen />}
-      </Box>
+      <Box p={4}>{!isPlay ? <PlayerInput /> : <ActionScreen />}</Box>
     </>
   );
 }

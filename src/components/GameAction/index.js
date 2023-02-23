@@ -13,7 +13,7 @@ export default function ActionScreen() {
         <div>*người chơi được sắp xếp theo thứ tự gọi</div>
       </Center>
       <Stack>
-        {sortedPlayers.map((player, index) => (
+        {sortedPlayers?.map((player, index) => (
           <div key={index}>
             <HStack>
               <div>{player.name}</div>

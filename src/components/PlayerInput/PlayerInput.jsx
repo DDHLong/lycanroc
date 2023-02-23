@@ -8,9 +8,8 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { useRole } from "../../context/RoleProvider";
 import { RoleNameEnum } from "../../enums/RoleEnum";
-import useStart from "../../hooks/useStart";
+import { usePlayerStore, usePlayStore } from "../../store/store";
 import "./index.css";
 
 const options = [
@@ -21,9 +20,10 @@ const options = [
   RoleNameEnum.Witch,
 ];
 
-function PlayerInput({ startGame }) {
+function PlayerInput({}) {
   const toast = useToast();
-  const { players, addPlayer, updatePlayer } = useRole();
+  const { isPlay, setIsPlay } = usePlayStore();
+  const { players, addPlayer, updatePlayer } = usePlayerStore();
   const [value, setValue] = useState("");
   const handleChange = (event) => setValue(event.target.value);
   const handleSubmit = () => {
@@ -39,14 +39,26 @@ function PlayerInput({ startGame }) {
       });
       throw new Error("Already exist player");
     }
+    if (value === "") {
+      toast({
+        title: "Tên không được để trống",
+        description: "Name cannot be empty",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+        position: "bottom-right",
+      });
+      throw new Error("Name cannot be empty");
+    }
     addPlayer(player);
     setValue("");
   };
 
   const handleSelect = (event, name) => {
-    const player = { name: name, role: event.target.value, type: "role" };
-    updatePlayer(player);
+    updatePlayer(name, { role: event.target.value });
   };
+
+  console.log(players);
 
   return (
     <>
@@ -61,7 +73,7 @@ function PlayerInput({ startGame }) {
           <Button mr={5} onClick={handleSubmit}>
             Thêm
           </Button>
-          <Button onClick={startGame}>Chơi</Button>
+          <Button onClick={() => setIsPlay(true)}>Chơi</Button>
         </Flex>
         <SimpleGrid mt={7} columns={[1, 2, null, 3]} spacing="40px">
           {players &&
